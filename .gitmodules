@@ -1,0 +1,3 @@
+[submodule "quadwild-bimdf"]
+	path = quadwild-bimdf
+	url = https://github.com/cgg-bern/quadwild-bimdf.git
