@@ -39,6 +39,7 @@ Homepage = "https://github.com/PozzettiAndrea/pyquadwild"
 "Source Code" = "https://github.com/PozzettiAndrea/pyquadwild"
 
 [tool.cibuildwheel]
+before-build = "python patches/fix_submodule_cmake.py"
 build = "cp310-* cp311-* cp312-* cp313-*"
 skip = "*musllinux* *i686*"
 test-command = "python -c \"import pyquadwild; print(pyquadwild.quadwild_remesh); print('OK')\""
@@ -56,7 +57,7 @@ repair-wheel-command = "delocate-wheel --require-archs {delocate_archs} -w {dest
 
 [tool.cibuildwheel.windows]
 archs = ["AMD64"]
-before-build = "pip install delvewheel"
+before-build = "python patches/fix_submodule_cmake.py && pip install delvewheel"
 repair-wheel-command = "delvewheel repair -w {dest_dir} {wheel}"
 
 [tool.scikit-build]
